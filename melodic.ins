@@ -1,0 +1,61 @@
+# BeatBax Game Boy Melodic Instruments
+# Shareable instrument library for melodic sounds
+# Repository: beatbax/instruments-gb
+
+# === PULSE CHANNEL LEADS ===
+
+# Bright, punchy lead with strong attack
+inst gb_lead type=pulse1 duty=50 env=15,down
+
+# Softer lead with sustained envelope
+inst gb_soft_lead type=pulse1 duty=25 env=12,flat
+
+# Aggressive pulse lead with 75% duty cycle
+inst gb_square_lead type=pulse1 duty=75 env=14,down
+
+# Classic 8-bit arpeggio lead
+inst gb_arp_lead type=pulse1 duty=50 env=13,down
+
+# === BASS INSTRUMENTS ===
+
+# Deep bass with short decay
+inst gb_bass type=pulse2 duty=12 env=10,down
+
+# Sustained bass for longer notes
+inst gb_bass_long type=pulse2 duty=25 env=14,flat
+
+# Punchy sub bass
+inst gb_sub_bass type=pulse2 duty=50 env=8,down
+
+# === WAVE CHANNEL ===
+
+# Sine-like wave for smooth melodies
+inst gb_sine type=wave wave=[0,3,5,7,9,11,13,14,15,14,13,11,9,7,5,3]
+
+# Sawtooth wave for bright tones
+inst gb_saw type=wave wave=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+
+# Triangle wave for mellow sounds
+inst gb_triangle type=wave wave=[0,2,4,6,8,10,12,14,15,14,12,10,8,6,4,2]
+
+# Square-ish wave for harmony
+inst gb_wave_square type=wave wave=[0,0,0,0,15,15,15,15,0,0,0,0,15,15,15,15]
+
+# Organ-like wave
+inst gb_organ type=wave wave=[0,4,8,12,15,12,8,4,0,4,8,12,15,12,8,4]
+
+# === CHORD/PAD ===
+
+# Pad for sustained chords
+inst gb_pad type=pulse1 duty=25 env=15,flat
+
+# Soft harmony voice
+inst gb_harmony type=pulse2 duty=50 env=11,flat
+
+# === PLUCK/PIZZICATO ===
+
+# Plucked string sound
+inst gb_pluck type=pulse1 duty=12 env=8,down
+
+# Short staccato notes
+inst gb_staccato type=pulse2 duty=25 env=6,down
