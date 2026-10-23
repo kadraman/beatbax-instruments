@@ -1,0 +1,166 @@
+# BeatBax Game Boy instrument programs (subpat + macros) — self-contained
+# Source: songs/instruments/gameboy.ins, dancefloor_pulse, gb_subpattern_macro_demo
+# Import: github:kadraman/beatbax-instruments/main/gameboy/programs.ins
+
+# === Macro demos (gb_subpattern_macro_demo) ===
+
+# PWM wah: looping duty 50% ↔ 12.5% (duty indices 2 ↔ 0)
+inst wah type=pulse1 duty=50 env=12,flat,0 duty_env=[2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0|0]
+
+# Looped major triad arpeggio
+inst arp type=pulse2 duty=25 env=10,flat,0 arp_env=[0,4,7|0]
+
+# === Pulse subpattern programs (dancefloor / gameboy.ins) ===
+
+# Looping six-step interval riff
+subpat lattice_arp_sub =
+  +8
+  +17
+  +0
+  +20
+  +5
+  +12 jump:1
+inst lattice_arp type=pulse1 duty=50 env=11,down,2 subpat=lattice_arp_sub
+
+# Gated pulse snare: drum without noise
+subpat gate_snare_sub =
+  vol:0
+  +0 vol:15
+  -6 vol:15
+  vol:0
+inst gate_snare type=pulse1 duty=50 env=12,down,1 subpat=gate_snare_sub
+
+# PWM-style wash: duty/timbre sweep into looping vibrato
+subpat pwm_wash_sub =
+  +0 timbre:208
+  +0 vol:4
+  +0 vol:9
+  timbre:192
+  timbre:177
+  timbre:162
+  timbre:148
+  timbre:133
+  timbre:118
+  timbre:104
+  timbre:89
+  timbre:74
+  timbre:60
+  timbre:45
+  timbre:30
+  timbre:16
+  timbre:30
+  timbre:43
+  timbre:57
+  timbre:71
+  timbre:84
+  timbre:98
+  timbre:112
+  timbre:125
+  timbre:139
+  timbre:153
+  timbre:166
+  timbre:180
+  timbre:194
+  timbre:208
+  fx:4,98
+  jump:30
+inst pwm_wash type=pulse1 duty=75 env=7,down,4 subpat=pwm_wash_sub
+
+# Growling bass: volume and timbre steps with pitch FX
+subpat growl_bass_sub =
+  +0 vol:6
+  timbre:34
+  vol:12
+  timbre:0
+  fx:2,5
+  timbre:34
+  fx:4,99
+  timbre:68
+  fx:4,99
+  jump:9
+inst growl_bass type=pulse1 duty=50 env=12,down,5 subpat=growl_bass_sub
+
+# Shimmering lead: timbre cascade then pitch slides
+subpat prism_lead_sub =
+  timbre:160
+  timbre:140
+  timbre:120
+  timbre:100
+  timbre:82
+  timbre:3
+  timbre:40
+  timbre:20
+  timbre:0
+  timbre:80
+  timbre:144
+  .
+  fx:2,4
+  fx:2,4
+  fx:1,4
+  fx:1,4
+  fx:2,64
+  fx:1,64
+inst prism_lead type=pulse1 duty=50 env=7,down,4 subpat=prism_lead_sub
+
+# === Wave programs (songs/instruments/gameboy.ins) ===
+
+subpat click_lead_sub =
+  +12 timbre:48
+  +0
+  timbre:112
+  .
+  fx:4,161
+  vol:9
+  fx:4,161
+  timbre:2
+  fx:2,2
+  fx:1,1
+  fx:1,1
+  timbre:3
+  vol:4
+  fx:4,97
+  fx:4,97
+  fx:4,97
+  jump:15
+inst click_lead type=wave wave="13543178EFFFFEBCDDDDDCCBCDEEEEEC" volume=100 length=47 subpat=click_lead_sub
+
+subpat wave_snap_sub =
+  vol:0
+  +0 vol:15
+  -6 vol:15
+  vol:0
+inst wave_snap type=wave wave="FFFFFFFFFFFFFFFF0000000000000000" volume=100 subpat=wave_snap_sub
+
+subpat swell_saw_sub =
+  +12 vol:5
+  .
+  vol:7
+  .
+  vol:5
+  .
+  vol:2
+  .
+  vol:4
+  .
+  vol:3
+  vol:2
+  vol:1
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  jump:29
+inst swell_saw type=wave wave="000112233445566778899AABBCCDDEEF" volume=50 length=71 subpat=swell_saw_sub

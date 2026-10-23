@@ -1,0 +1,26 @@
+# Smoke song for Game Boy kit (sibling import; no path traversal).
+# From BeatBax repo root:
+#   npm run cli -- export wav instruments/gameboy/smoke.bax tmp/gb_kit_smoke.wav
+#   npm run cli -- export uge instruments/gameboy/smoke.bax tmp/gb_kit_smoke.uge
+
+chip gameboy
+bpm 128
+song name "GB Kit Smoke"
+song artist "BeatBax Instruments"
+
+import "local:kit.ins"
+
+pat lead_bar = C5 E5 G5 C6 E5 G5 B4 D5
+pat bass_bar = C3 . C3 . G2 . G2 .
+pat drum_bar = kick hat snare hat kick hat snare hat
+
+seq lead_seq = lead_bar lead_bar
+seq bass_seq = bass_bar bass_bar
+seq drum_seq = drum_bar drum_bar
+
+channel 1 => inst gb_lead seq lead_seq
+channel 2 => inst gb_bass seq bass_seq
+channel 3 => inst gb_cover_bass seq bass_seq
+channel 4 => inst kick seq drum_seq
+
+play

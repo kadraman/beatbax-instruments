@@ -1,0 +1,34 @@
+# BeatBax NES noise drums — self-contained (remote-safe)
+# Source: battle_fanfare / cover kit (period 12/7/2 + ghost/crash)
+# Import: github:kadraman/beatbax-instruments/main/nes/drums.ins
+
+# Deep kick — noise_period=12
+inst kick type=noise noise_mode=normal noise_period=12 vol_env=[15,14,12,9,6,4,2,1] note=C5
+
+# Mid snare — noise_period=7
+inst snare type=noise noise_mode=normal noise_period=7 vol_env=[14,13,11,9,7,5,3,2,1] note=C5
+
+# Closed hi-hat — noise_period=2
+inst hihat type=noise noise_mode=normal noise_period=2 vol_env=[7,4,2,1] note=C5
+
+# Ghost snare (quiet backbeat)
+inst ghost type=noise noise_mode=normal noise_period=7 vol_env=[5,4,3,2,1] note=C5
+
+# Crash / cymbal — noise_period=3
+inst crash type=noise noise_mode=normal noise_period=3 vol_env=[12,11,10,9,8,7,6,5,4,3,2,1] note=C5
+
+# Open-ish hat (slightly longer)
+inst hat_open type=noise noise_mode=normal noise_period=2 vol_env=[9,7,5,3,2,1] note=C5
+
+# Rim / short tick
+inst rim type=noise noise_mode=normal noise_period=12 vol_env=[11,6,2] note=C5
+
+# Atmospheric drum palette (silver_orbit / shadow_temple)
+inst drum_hi type=noise noise_mode=normal noise_period=2 vol_env=[6,2] note=C5
+inst drum_med type=noise noise_mode=normal noise_period=6 vol_env=[9,7,4,2] note=C5
+inst drum_lo type=noise noise_mode=normal noise_period=11 vol_env=[10,7,4,2] note=C5
+
+# Hardware-env variants (kingdom_hall / wily style)
+inst kick_env type=noise noise_mode=normal noise_period=12 env=15,down env_period=2 note=C5
+inst snare_env type=noise noise_mode=normal noise_period=7 env=14,down env_period=2 note=C5
+inst hihat_env type=noise noise_mode=normal noise_period=2 env=6,down env_period=0 note=C5

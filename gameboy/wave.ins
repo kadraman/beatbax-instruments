@@ -1,0 +1,56 @@
+# BeatBax Game Boy wave channel — self-contained (remote-safe; no nested imports)
+# Source: geometric basics, cover bass, mystic hex, song basses, gb_wave_scan,
+#         songs/instruments/gameboy.ins specialty tables
+# Import: github:kadraman/beatbax-instruments/main/gameboy/wave.ins
+
+# === Geometric basics ===
+
+inst gb_sine type=wave volume=100 wave=[0,3,5,7,9,11,13,14,15,14,13,11,9,7,5,3,0,3,5,7,9,11,13,14,15,14,13,11,9,7,5,3]
+inst gb_saw type=wave volume=100 wave=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+inst gb_triangle type=wave volume=100 wave=[0,2,4,6,8,10,12,14,15,14,12,10,8,6,4,2,0,2,4,6,8,10,12,14,15,14,12,10,8,6,4,2]
+inst gb_wave_square type=wave volume=100 wave=[0,0,0,0,15,15,15,15,0,0,0,0,15,15,15,15,0,0,0,0,15,15,15,15,0,0,0,0,15,15,15,15]
+inst gb_organ type=wave volume=100 wave=[0,4,8,12,15,12,8,4,0,4,8,12,15,12,8,4,0,4,8,12,15,12,8,4,0,4,8,12,15,12,8,4]
+
+# === Song-proven basses ===
+
+# Cover kit square-ish bass (aha / airwolf / …) — volume 25 sits under pulse
+inst gb_cover_bass type=wave volume=25 wave=[0,5,11,15,15,15,15,15,11,5,0,0,0,0,0,0,0,0,6,8,8,8,8,8,8,8,8,6,0,0,0,0]
+
+# mystic_voyage hex bass (hUGE-native)
+inst gb_mystic_bass type=wave volume=50 wave="0478ABBB986202467776420146777631"
+
+# Soft additive bass (a_trainers_journey poke_bass)
+inst gb_poke_bass type=wave volume=100 wave=[9,9,10,12,12,13,14,14,13,12,11,9,8,5,3,4,4,5,6,6,7,7,7,6,6,5,3,4,4,4,5,6]
+
+# Deep rounded bass (heroes_call)
+inst gb_deep_bass type=wave volume=50 wave=[0,1,1,2,3,5,6,8,10,12,13,14,15,15,14,14,13,12,11,10,8,7,5,4,3,2,1,1,0,0,0,0]
+
+# Iron / mech bass (digital_citadel)
+inst gb_iron_bass type=wave volume=50 wave=[0,2,5,8,11,13,15,15,14,12,10,8,6,5,4,3,2,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0]
+
+# Soft night bass (night_hawk)
+inst gb_soft_wave_bass type=wave volume=50 wave=[0,1,2,3,5,7,9,11,12,13,14,15,15,15,14,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0,0,0]
+
+# Crypt dark bass
+inst gb_crypt_bass type=wave volume=25 wave=[0,5,11,15,15,15,15,15,11,5,0,0,0,0,0,0,0,0,6,8,8,8,8,8,8,8,8,6,0,0,0,0]
+
+# Grassland dual-wave companion / wavekick hybrid table
+inst gb_grass_bass type=wave volume=50 wave=[8,9,10,11,12,13,14,15,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0,0,1,2,3,4,5,6,7]
+inst gb_wavekick type=wave volume=50 wave=[12,10,8,5,3,1,0,0,0,0,0,0,0,0,0,0,12,10,8,5,3,1,0,0,0,0,0,0,0,0,0,0] note=C2
+
+# === Specialty tables (songs/instruments/gameboy.ins) ===
+
+inst pipe_organ type=wave wave="BED9677621378643576447AB74578767" volume=100
+inst minor_stack type=wave wave="DC204BE9327A98658648AA7228EC402A" volume=100
+inst alloy type=wave wave="841161ED57475AADCEA31779DD200347" volume=100
+inst punch_bass type=wave wave="8ACDEFFFEDB974108ACDEFFF00000000" volume=100
+inst grit_block type=wave wave="88888FFF888888800008888880000000" volume=100
+inst woodwind type=wave wave="8A9843068421000001100000011379FC" volume=100
+inst hash_grain type=wave wave="D0D6A226A23F00A004583D5385A2145A" volume=100
+
+# === Wave scan picks (gb_wave_scan_demo) ===
+
+inst gb_vowel_ah type=wave volume=100 wave=[8,10,12,14,15,14,13,11,8,6,3,2,0,1,2,5,8,10,12,14,15,14,13,11,8,6,3,2,0,1,2,5]
+inst gb_vowel_oh type=wave volume=100 wave=[0,2,4,6,8,10,11,12,13,14,14,14,13,12,11,10,8,6,4,2,0,2,4,6,8,10,11,12,11,9,6,2]
+inst gb_metal type=wave volume=100 wave=[15,8,0,6,12,8,3,6,9,8,6,6,6,8,9,6,3,8,12,6,0,8,15,8,0,6,12,8,3,6,9,12]
+inst gb_bell type=wave volume=100 wave=[8,9,10,12,13,14,14,15,15,15,14,14,13,12,10,9,8,6,5,3,2,1,1,0,0,0,1,1,2,3,5,6]

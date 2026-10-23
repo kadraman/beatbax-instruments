@@ -1,0 +1,420 @@
+# BeatBax Game Boy full kit — concatenated (remote-safe; no nested imports)
+# Prefer leaf imports when you only need one category.
+# Import: github:kadraman/beatbax-instruments/main/gameboy/kit.ins
+
+# ========== melodic ==========
+# BeatBax Game Boy melodic (pulse) — self-contained (remote-safe; no nested imports)
+# Source: originals duty triad (50/12.5/75), soft harmony, pluck/pad, sweep demos
+# Import: github:kadraman/beatbax-instruments/main/gameboy/melodic.ins
+
+# === Lead duty triad (crypt / night_hawk / mystic / heroes / citadel family) ===
+
+# Bright balanced lead
+inst gb_lead type=pulse1 duty=50 env=13,down,2
+
+# Thin cutting lead (12.5%)
+inst gb_lead_thin type=pulse1 duty=12.5 env=14,down,1
+
+# Warm thicker lead (75%)
+inst gb_lead_warm type=pulse1 duty=75 env=12,down,2
+
+# Soft sustained lead
+inst gb_soft_lead type=pulse1 duty=25 env=12,flat,0
+
+# Aggressive square-ish lead
+inst gb_square_lead type=pulse1 duty=75 env=14,down,1
+
+# === Harmony / pad (pulse2) ===
+
+# Soft chord / arp voice
+inst gb_harmony type=pulse2 duty=25 env=8,down,4
+
+# Sustained harmony
+inst gb_harmony_sus type=pulse2 duty=75 env=9,down,5
+
+# Pad for held chords
+inst gb_pad type=pulse1 duty=25 env=15,flat,0
+
+# Soft harmony alias used by older kits
+inst gb_soft_harmony type=pulse2 duty=50 env=11,flat,0
+
+# === Bass (pulse) ===
+
+# Punchy pulse bass (channel-2 friendly; wave basses live in wave.ins)
+inst gb_bass type=pulse2 duty=12.5 env=10,down,1
+
+# Sustained pulse bass
+inst gb_bass_long type=pulse2 duty=25 env=14,flat,0
+
+# Punchy mid pulse bass
+inst gb_sub_bass type=pulse2 duty=50 env=8,down,1
+
+# === Pluck / staccato ===
+
+inst gb_pluck type=pulse1 duty=12.5 env=8,down,1
+inst gb_staccato type=pulse2 duty=25 env=6,down,1
+
+# === Sweep (Pulse 1 hardware) — gb_sweep_demo / digital_citadel ===
+
+# Rising sweep
+inst gb_sweep_up type=pulse1 duty=50 env=15,down,7 sweep=7,up,3
+
+# Falling sweep
+inst gb_sweep_down type=pulse1 duty=50 env=15,down,7 sweep=6,down,5
+
+# Mech swept lead (digital_citadel)
+inst gb_mech_swept type=pulse1 duty=50 env=14,down,2 sweep=4,down,3
+
+# ========== wave ==========
+# BeatBax Game Boy wave channel — self-contained (remote-safe; no nested imports)
+# Source: geometric basics, cover bass, mystic hex, song basses, gb_wave_scan,
+#         songs/instruments/gameboy.ins specialty tables
+# Import: github:kadraman/beatbax-instruments/main/gameboy/wave.ins
+
+# === Geometric basics ===
+
+inst gb_sine type=wave volume=100 wave=[0,3,5,7,9,11,13,14,15,14,13,11,9,7,5,3,0,3,5,7,9,11,13,14,15,14,13,11,9,7,5,3]
+inst gb_saw type=wave volume=100 wave=[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]
+inst gb_triangle type=wave volume=100 wave=[0,2,4,6,8,10,12,14,15,14,12,10,8,6,4,2,0,2,4,6,8,10,12,14,15,14,12,10,8,6,4,2]
+inst gb_wave_square type=wave volume=100 wave=[0,0,0,0,15,15,15,15,0,0,0,0,15,15,15,15,0,0,0,0,15,15,15,15,0,0,0,0,15,15,15,15]
+inst gb_organ type=wave volume=100 wave=[0,4,8,12,15,12,8,4,0,4,8,12,15,12,8,4,0,4,8,12,15,12,8,4,0,4,8,12,15,12,8,4]
+
+# === Song-proven basses ===
+
+# Cover kit square-ish bass (aha / airwolf / …) — volume 25 sits under pulse
+inst gb_cover_bass type=wave volume=25 wave=[0,5,11,15,15,15,15,15,11,5,0,0,0,0,0,0,0,0,6,8,8,8,8,8,8,8,8,6,0,0,0,0]
+
+# mystic_voyage hex bass (hUGE-native)
+inst gb_mystic_bass type=wave volume=50 wave="0478ABBB986202467776420146777631"
+
+# Soft additive bass (a_trainers_journey poke_bass)
+inst gb_poke_bass type=wave volume=100 wave=[9,9,10,12,12,13,14,14,13,12,11,9,8,5,3,4,4,5,6,6,7,7,7,6,6,5,3,4,4,4,5,6]
+
+# Deep rounded bass (heroes_call)
+inst gb_deep_bass type=wave volume=50 wave=[0,1,1,2,3,5,6,8,10,12,13,14,15,15,14,14,13,12,11,10,8,7,5,4,3,2,1,1,0,0,0,0]
+
+# Iron / mech bass (digital_citadel)
+inst gb_iron_bass type=wave volume=50 wave=[0,2,5,8,11,13,15,15,14,12,10,8,6,5,4,3,2,2,1,1,1,0,0,0,0,0,0,0,0,0,0,0]
+
+# Soft night bass (night_hawk)
+inst gb_soft_wave_bass type=wave volume=50 wave=[0,1,2,3,5,7,9,11,12,13,14,15,15,15,14,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0,0,0]
+
+# Crypt dark bass
+inst gb_crypt_bass type=wave volume=25 wave=[0,5,11,15,15,15,15,15,11,5,0,0,0,0,0,0,0,0,6,8,8,8,8,8,8,8,8,6,0,0,0,0]
+
+# Grassland dual-wave companion / wavekick hybrid table
+inst gb_grass_bass type=wave volume=50 wave=[8,9,10,11,12,13,14,15,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0,0,1,2,3,4,5,6,7]
+inst gb_wavekick type=wave volume=50 wave=[12,10,8,5,3,1,0,0,0,0,0,0,0,0,0,0,12,10,8,5,3,1,0,0,0,0,0,0,0,0,0,0] note=C2
+
+# === Specialty tables (songs/instruments/gameboy.ins) ===
+
+inst pipe_organ type=wave wave="BED9677621378643576447AB74578767" volume=100
+inst minor_stack type=wave wave="DC204BE9327A98658648AA7228EC402A" volume=100
+inst alloy type=wave wave="841161ED57475AADCEA31779DD200347" volume=100
+inst punch_bass type=wave wave="8ACDEFFFEDB974108ACDEFFF00000000" volume=100
+inst grit_block type=wave wave="88888FFF888888800008888880000000" volume=100
+inst woodwind type=wave wave="8A9843068421000001100000011379FC" volume=100
+inst hash_grain type=wave wave="D0D6A226A23F00A004583D5385A2145A" volume=100
+
+# === Wave scan picks (gb_wave_scan_demo) ===
+
+inst gb_vowel_ah type=wave volume=100 wave=[8,10,12,14,15,14,13,11,8,6,3,2,0,1,2,5,8,10,12,14,15,14,13,11,8,6,3,2,0,1,2,5]
+inst gb_vowel_oh type=wave volume=100 wave=[0,2,4,6,8,10,11,12,13,14,14,14,13,12,11,10,8,6,4,2,0,2,4,6,8,10,11,12,11,9,6,2]
+inst gb_metal type=wave volume=100 wave=[15,8,0,6,12,8,3,6,9,8,6,6,6,8,9,6,3,8,12,6,0,8,15,8,0,6,12,8,3,6,9,12]
+inst gb_bell type=wave volume=100 wave=[8,9,10,12,13,14,14,15,15,15,14,14,13,12,10,9,8,6,5,3,2,1,1,0,0,0,1,1,2,3,5,6]
+
+# ========== drums ==========
+# BeatBax Game Boy drums — self-contained (remote-safe; no nested imports)
+# Source: cover kit (songs/covers/bax/gameboy), originals, trainers_journey soft kit,
+#         songs/instruments/gameboy.ins advanced noise programs
+# Import: github:kadraman/beatbax-instruments/main/gameboy/drums.ins
+
+# === Standard kit (covers + most originals) ===
+
+# Deep kick with pitch drop — cover kit / tutorial_groove family
+inst kick type=noise gb:width=7 env=14,down,1 length=16 uge_note=C-6 pitch_env=[0,-2,-4,-6] vol_env=[15,12,8,4]
+
+# Crack snare with brief pitch blip
+inst snare type=noise gb:width=7 env=12,down,1 length=16 uge_note=C-7 pitch_env=[0,5,0] vol_env=[12,10,6,2]
+
+# Closed hi-hat (covers name)
+inst hihat type=noise gb:width=15 env=5,down,1 length=8 uge_note=C-8 vol_env=[6,2]
+
+# Closed hi-hat alias (originals name)
+inst hat type=noise gb:width=15 env=5,down,1 length=8 uge_note=C-8 vol_env=[6,2]
+
+# Open-ish hat (longer decay)
+inst hat_open type=noise gb:width=15 env=8,down,2 length=24 uge_note=D-7 vol_env=[8,6,4,2]
+
+# Shaker / light tick
+inst shaker type=noise gb:width=15 env=4,down,1 length=4 uge_note=D-7 vol_env=[4,1]
+
+# Ghost snare (quiet backbeat)
+inst ghost type=noise gb:width=7 env=6,down,1 length=8 uge_note=C-7 vol_env=[5,3,1]
+
+# Crash cymbal
+inst crash type=noise gb:width=15 env=15,down,6 length=64 uge_note=F-7 vol_env=[15,12,10,8,6,4,2]
+
+# === Soft kit (a_trainers_journey) ===
+
+inst kick_soft type=noise gb:width=7 env=6,down,1 length=16 uge_note=C-6 pitch_env=[0,-2,-4,-6] vol_env=[8,6,4,2]
+inst snare_soft type=noise gb:width=7 env=9,down,2 length=16 uge_note=C-7 pitch_env=[0,7,0] vol_env=[10,7,4]
+inst hat_soft type=noise gb:width=15 env=4,down,1 length=8 uge_note=C-8 vol_env=[4,1]
+
+# === Extended kit ===
+
+inst tom_high type=noise gb:width=7 env=9,down,1 length=12 uge_note=E-6 pitch_env=[0,-1,-2] vol_env=[12,8,4,1]
+inst tom_mid type=noise gb:width=7 env=10,down,1 length=14 uge_note=D-6 pitch_env=[0,-2,-4] vol_env=[13,9,5,2]
+inst tom_low type=noise gb:width=7 env=12,down,2 length=16 uge_note=C-6 pitch_env=[0,-3,-6] vol_env=[14,10,6,2]
+inst clap type=noise gb:width=15 env=10,down,1 length=10 uge_note=C-7 pitch_env=[0,3,0] vol_env=[12,8,3]
+inst rim type=noise gb:width=7 env=7,down,1 length=6 uge_note=D-7 vol_env=[10,4,1]
+
+# === Subpattern specialty noise (songs/instruments/gameboy.ins) ===
+
+# 7-bit kick: long pitch curve from a click down into a thud
+subpat bit_kick_sub =
+  .
+  +29
+  +13
+  +4
+  -6
+  -15
+  -26 halt
+inst bit_kick type=noise gb:width=7 env=14,down,2 length=49 uge_note=C-5 subpat=bit_kick_sub
+
+# Crack snare: body dip then a noisy crack and rattle
+subpat crack_snare_sub =
+  .
+  -12
+  +32
+  +7
+  -3
+  +7
+  +22 halt
+inst crack_snare type=noise gb:width=15 env=14,down,1 uge_note=D#7 subpat=crack_snare_sub
+
+# Tight closed hat: very high clock, tiny pitch motion
+subpat tight_hat_sub =
+  .
+  -2
+  +0
+  +0
+  +0
+  +0
+  +0 halt
+inst tight_hat type=noise gb:width=15 env=15,down,1 length=50 uge_note=C-8 subpat=tight_hat_sub
+
+# Falling noise: transition / siren fall
+subpat fall_noise_sub =
+  +0
+  .
+  .
+  .
+  -1
+  .
+  .
+  .
+  -2
+  .
+  .
+  .
+  -3
+  .
+  .
+  .
+  -4
+  .
+  .
+  .
+  -5
+  .
+  .
+  .
+  -6
+  .
+  .
+  .
+  -7
+  .
+  .
+  jump:21
+inst fall_noise type=noise gb:width=15 env=15,down,7 uge_note=A-6 subpat=fall_noise_sub
+
+# Tonal 7-bit noise: sequence like a melody
+subpat tone_noise_sub =
+  .
+  +0
+  +0
+  +0 halt
+  +0
+  +0
+  +0
+inst tone_noise type=noise gb:width=7 env=7,flat,0 length=48 uge_note=E-7 subpat=tone_noise_sub
+
+# ========== programs ==========
+# BeatBax Game Boy instrument programs (subpat + macros) — self-contained
+# Source: songs/instruments/gameboy.ins, dancefloor_pulse, gb_subpattern_macro_demo
+# Import: github:kadraman/beatbax-instruments/main/gameboy/programs.ins
+
+# === Macro demos (gb_subpattern_macro_demo) ===
+
+# PWM wah: looping duty 50% ↔ 12.5% (duty indices 2 ↔ 0)
+inst wah type=pulse1 duty=50 env=12,flat,0 duty_env=[2,2,2,2,2,2,2,2,0,0,0,0,0,0,0,0|0]
+
+# Looped major triad arpeggio
+inst arp type=pulse2 duty=25 env=10,flat,0 arp_env=[0,4,7|0]
+
+# === Pulse subpattern programs (dancefloor / gameboy.ins) ===
+
+# Looping six-step interval riff
+subpat lattice_arp_sub =
+  +8
+  +17
+  +0
+  +20
+  +5
+  +12 jump:1
+inst lattice_arp type=pulse1 duty=50 env=11,down,2 subpat=lattice_arp_sub
+
+# Gated pulse snare: drum without noise
+subpat gate_snare_sub =
+  vol:0
+  +0 vol:15
+  -6 vol:15
+  vol:0
+inst gate_snare type=pulse1 duty=50 env=12,down,1 subpat=gate_snare_sub
+
+# PWM-style wash: duty/timbre sweep into looping vibrato
+subpat pwm_wash_sub =
+  +0 timbre:208
+  +0 vol:4
+  +0 vol:9
+  timbre:192
+  timbre:177
+  timbre:162
+  timbre:148
+  timbre:133
+  timbre:118
+  timbre:104
+  timbre:89
+  timbre:74
+  timbre:60
+  timbre:45
+  timbre:30
+  timbre:16
+  timbre:30
+  timbre:43
+  timbre:57
+  timbre:71
+  timbre:84
+  timbre:98
+  timbre:112
+  timbre:125
+  timbre:139
+  timbre:153
+  timbre:166
+  timbre:180
+  timbre:194
+  timbre:208
+  fx:4,98
+  jump:30
+inst pwm_wash type=pulse1 duty=75 env=7,down,4 subpat=pwm_wash_sub
+
+# Growling bass: volume and timbre steps with pitch FX
+subpat growl_bass_sub =
+  +0 vol:6
+  timbre:34
+  vol:12
+  timbre:0
+  fx:2,5
+  timbre:34
+  fx:4,99
+  timbre:68
+  fx:4,99
+  jump:9
+inst growl_bass type=pulse1 duty=50 env=12,down,5 subpat=growl_bass_sub
+
+# Shimmering lead: timbre cascade then pitch slides
+subpat prism_lead_sub =
+  timbre:160
+  timbre:140
+  timbre:120
+  timbre:100
+  timbre:82
+  timbre:3
+  timbre:40
+  timbre:20
+  timbre:0
+  timbre:80
+  timbre:144
+  .
+  fx:2,4
+  fx:2,4
+  fx:1,4
+  fx:1,4
+  fx:2,64
+  fx:1,64
+inst prism_lead type=pulse1 duty=50 env=7,down,4 subpat=prism_lead_sub
+
+# === Wave programs (songs/instruments/gameboy.ins) ===
+
+subpat click_lead_sub =
+  +12 timbre:48
+  +0
+  timbre:112
+  .
+  fx:4,161
+  vol:9
+  fx:4,161
+  timbre:2
+  fx:2,2
+  fx:1,1
+  fx:1,1
+  timbre:3
+  vol:4
+  fx:4,97
+  fx:4,97
+  fx:4,97
+  jump:15
+inst click_lead type=wave wave="13543178EFFFFEBCDDDDDCCBCDEEEEEC" volume=100 length=47 subpat=click_lead_sub
+
+subpat wave_snap_sub =
+  vol:0
+  +0 vol:15
+  -6 vol:15
+  vol:0
+inst wave_snap type=wave wave="FFFFFFFFFFFFFFFF0000000000000000" volume=100 subpat=wave_snap_sub
+
+subpat swell_saw_sub =
+  +12 vol:5
+  .
+  vol:7
+  .
+  vol:5
+  .
+  vol:2
+  .
+  vol:4
+  .
+  vol:3
+  vol:2
+  vol:1
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  .
+  jump:29
+inst swell_saw type=wave wave="000112233445566778899AABBCCDDEEF" volume=50 length=71 subpat=swell_saw_sub

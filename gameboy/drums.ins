@@ -1,0 +1,126 @@
+# BeatBax Game Boy drums — self-contained (remote-safe; no nested imports)
+# Source: cover kit (songs/covers/bax/gameboy), originals, trainers_journey soft kit,
+#         songs/instruments/gameboy.ins advanced noise programs
+# Import: github:kadraman/beatbax-instruments/main/gameboy/drums.ins
+
+# === Standard kit (covers + most originals) ===
+
+# Deep kick with pitch drop — cover kit / tutorial_groove family
+inst kick type=noise gb:width=7 env=14,down,1 length=16 uge_note=C-6 pitch_env=[0,-2,-4,-6] vol_env=[15,12,8,4]
+
+# Crack snare with brief pitch blip
+inst snare type=noise gb:width=7 env=12,down,1 length=16 uge_note=C-7 pitch_env=[0,5,0] vol_env=[12,10,6,2]
+
+# Closed hi-hat (covers name)
+inst hihat type=noise gb:width=15 env=5,down,1 length=8 uge_note=C-8 vol_env=[6,2]
+
+# Closed hi-hat alias (originals name)
+inst hat type=noise gb:width=15 env=5,down,1 length=8 uge_note=C-8 vol_env=[6,2]
+
+# Open-ish hat (longer decay)
+inst hat_open type=noise gb:width=15 env=8,down,2 length=24 uge_note=D-7 vol_env=[8,6,4,2]
+
+# Shaker / light tick
+inst shaker type=noise gb:width=15 env=4,down,1 length=4 uge_note=D-7 vol_env=[4,1]
+
+# Ghost snare (quiet backbeat)
+inst ghost type=noise gb:width=7 env=6,down,1 length=8 uge_note=C-7 vol_env=[5,3,1]
+
+# Crash cymbal
+inst crash type=noise gb:width=15 env=15,down,6 length=64 uge_note=F-7 vol_env=[15,12,10,8,6,4,2]
+
+# === Soft kit (a_trainers_journey) ===
+
+inst kick_soft type=noise gb:width=7 env=6,down,1 length=16 uge_note=C-6 pitch_env=[0,-2,-4,-6] vol_env=[8,6,4,2]
+inst snare_soft type=noise gb:width=7 env=9,down,2 length=16 uge_note=C-7 pitch_env=[0,7,0] vol_env=[10,7,4]
+inst hat_soft type=noise gb:width=15 env=4,down,1 length=8 uge_note=C-8 vol_env=[4,1]
+
+# === Extended kit ===
+
+inst tom_high type=noise gb:width=7 env=9,down,1 length=12 uge_note=E-6 pitch_env=[0,-1,-2] vol_env=[12,8,4,1]
+inst tom_mid type=noise gb:width=7 env=10,down,1 length=14 uge_note=D-6 pitch_env=[0,-2,-4] vol_env=[13,9,5,2]
+inst tom_low type=noise gb:width=7 env=12,down,2 length=16 uge_note=C-6 pitch_env=[0,-3,-6] vol_env=[14,10,6,2]
+inst clap type=noise gb:width=15 env=10,down,1 length=10 uge_note=C-7 pitch_env=[0,3,0] vol_env=[12,8,3]
+inst rim type=noise gb:width=7 env=7,down,1 length=6 uge_note=D-7 vol_env=[10,4,1]
+
+# === Subpattern specialty noise (songs/instruments/gameboy.ins) ===
+
+# 7-bit kick: long pitch curve from a click down into a thud
+subpat bit_kick_sub =
+  .
+  +29
+  +13
+  +4
+  -6
+  -15
+  -26 halt
+inst bit_kick type=noise gb:width=7 env=14,down,2 length=49 uge_note=C-5 subpat=bit_kick_sub
+
+# Crack snare: body dip then a noisy crack and rattle
+subpat crack_snare_sub =
+  .
+  -12
+  +32
+  +7
+  -3
+  +7
+  +22 halt
+inst crack_snare type=noise gb:width=15 env=14,down,1 uge_note=D#7 subpat=crack_snare_sub
+
+# Tight closed hat: very high clock, tiny pitch motion
+subpat tight_hat_sub =
+  .
+  -2
+  +0
+  +0
+  +0
+  +0
+  +0 halt
+inst tight_hat type=noise gb:width=15 env=15,down,1 length=50 uge_note=C-8 subpat=tight_hat_sub
+
+# Falling noise: transition / siren fall
+subpat fall_noise_sub =
+  +0
+  .
+  .
+  .
+  -1
+  .
+  .
+  .
+  -2
+  .
+  .
+  .
+  -3
+  .
+  .
+  .
+  -4
+  .
+  .
+  .
+  -5
+  .
+  .
+  .
+  -6
+  .
+  .
+  .
+  -7
+  .
+  .
+  jump:21
+inst fall_noise type=noise gb:width=15 env=15,down,7 uge_note=A-6 subpat=fall_noise_sub
+
+# Tonal 7-bit noise: sequence like a melody
+subpat tone_noise_sub =
+  .
+  +0
+  +0
+  +0 halt
+  +0
+  +0
+  +0
+inst tone_noise type=noise gb:width=7 env=7,flat,0 length=48 uge_note=E-7 subpat=tone_noise_sub

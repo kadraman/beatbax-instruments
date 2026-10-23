@@ -1,0 +1,61 @@
+# BeatBax Game Boy melodic (pulse) — self-contained (remote-safe; no nested imports)
+# Source: originals duty triad (50/12.5/75), soft harmony, pluck/pad, sweep demos
+# Import: github:kadraman/beatbax-instruments/main/gameboy/melodic.ins
+
+# === Lead duty triad (crypt / night_hawk / mystic / heroes / citadel family) ===
+
+# Bright balanced lead
+inst gb_lead type=pulse1 duty=50 env=13,down,2
+
+# Thin cutting lead (12.5%)
+inst gb_lead_thin type=pulse1 duty=12.5 env=14,down,1
+
+# Warm thicker lead (75%)
+inst gb_lead_warm type=pulse1 duty=75 env=12,down,2
+
+# Soft sustained lead
+inst gb_soft_lead type=pulse1 duty=25 env=12,flat,0
+
+# Aggressive square-ish lead
+inst gb_square_lead type=pulse1 duty=75 env=14,down,1
+
+# === Harmony / pad (pulse2) ===
+
+# Soft chord / arp voice
+inst gb_harmony type=pulse2 duty=25 env=8,down,4
+
+# Sustained harmony
+inst gb_harmony_sus type=pulse2 duty=75 env=9,down,5
+
+# Pad for held chords
+inst gb_pad type=pulse1 duty=25 env=15,flat,0
+
+# Soft harmony alias used by older kits
+inst gb_soft_harmony type=pulse2 duty=50 env=11,flat,0
+
+# === Bass (pulse) ===
+
+# Punchy pulse bass (channel-2 friendly; wave basses live in wave.ins)
+inst gb_bass type=pulse2 duty=12.5 env=10,down,1
+
+# Sustained pulse bass
+inst gb_bass_long type=pulse2 duty=25 env=14,flat,0
+
+# Punchy mid pulse bass
+inst gb_sub_bass type=pulse2 duty=50 env=8,down,1
+
+# === Pluck / staccato ===
+
+inst gb_pluck type=pulse1 duty=12.5 env=8,down,1
+inst gb_staccato type=pulse2 duty=25 env=6,down,1
+
+# === Sweep (Pulse 1 hardware) — gb_sweep_demo / digital_citadel ===
+
+# Rising sweep
+inst gb_sweep_up type=pulse1 duty=50 env=15,down,7 sweep=7,up,3
+
+# Falling sweep
+inst gb_sweep_down type=pulse1 duty=50 env=15,down,7 sweep=6,down,5
+
+# Mech swept lead (digital_citadel)
+inst gb_mech_swept type=pulse1 duty=50 env=14,down,2 sweep=4,down,3

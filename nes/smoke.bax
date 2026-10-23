@@ -1,0 +1,28 @@
+# Smoke song for NES kit (sibling import; no path traversal).
+# From BeatBax repo root:
+#   npm run cli -- export wav instruments/nes/smoke.bax tmp/nes_kit_smoke.wav
+
+chip nes
+bpm 120
+song name "NES Kit Smoke"
+song artist "BeatBax Instruments"
+
+import "local:kit.ins"
+
+pat lead_bar = C5 E5 G5 C6 E5 G5 B4 D5
+pat bass_bar = C3 . C3 . G2 . G2 .
+pat drum_bar = kick hihat snare hihat kick hihat snare hihat
+pat dmc_bar = kick_dmc . snare_dmc . kick_dmc . snare_dmc .
+
+seq lead_seq = lead_bar lead_bar
+seq bass_seq = bass_bar bass_bar
+seq drum_seq = drum_bar drum_bar
+seq dmc_seq = dmc_bar dmc_bar
+
+channel 1 => inst nes_lead seq lead_seq
+channel 2 => inst nes_harm seq lead_seq
+channel 3 => inst nes_tri seq bass_seq
+channel 4 => inst kick seq drum_seq
+channel 5 => inst kick_dmc seq dmc_seq
+
+play

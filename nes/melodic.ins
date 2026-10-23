@@ -1,0 +1,58 @@
+# BeatBax NES melodic (pulse + triangle) — self-contained (remote-safe)
+# Source: battle_fanfare, silver_orbit/shadow_temple, covers, macro demos
+# Import: github:kadraman/beatbax-instruments/main/nes/melodic.ins
+
+# === Pulse leads ===
+
+# Pitch-rip lead (battle_fanfare) — attack bend then flat
+inst nes_lead type=pulse1 duty=25 vol=10 pitch_env=[2,1,0,0,0,0,0,0]
+
+# Fanfare stab with volume + duty macros
+inst nes_lead_stab type=pulse1 duty=25 vol_env=[15,15,14,12,10,8,7,6,6,5,5,4,4,3,3,2] duty_env=[1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2|1]
+
+# Sustained swell then plateau (battle_fanfare lead_long)
+inst nes_lead_long type=pulse1 duty=25 vol_env=[6,8,10,11,12,12,12,12,12,12,12,10,9,8,7,6|12]
+
+# Warm 50% lead, flat
+inst nes_lead_warm type=pulse1 duty=50 vol=11
+
+# Thin 12.5% lead
+inst nes_lead_thin type=pulse1 duty=12 vol=9
+
+# Intro swell pad (silver_orbit family)
+inst nes_lead_swell type=pulse1 duty=50 vol_env=[2,3,4,5,6,7,8,9,10,11|9]
+
+# Plucky decay lead (covers guitar/piano family)
+inst nes_pluck type=pulse1 duty=25 vol=10 vol_env=[12,10,8,6,4,2,1]
+
+# Hardware fade-out lead
+inst nes_lead_end type=pulse1 duty=25 env=11,down env_period=10
+
+# === Pulse 2 harmony ===
+
+inst nes_harm type=pulse2 duty=12 vol=9
+inst nes_harm_warm type=pulse2 duty=50 vol=9
+inst nes_harm_stab type=pulse2 duty=50 vol_env=[15,15,14,12,10,8,7,6,6,5,5,4,4,3,3,2]
+
+# Looped minor triad arp (enable arp_env for shimmer)
+inst nes_harm_arp type=pulse2 duty=50 vol=9 arp_env=[0,3,7|0]
+
+# Soft pad / choir
+inst nes_pad type=pulse2 duty=50 vol=8
+
+# Short bleep (shadow_temple / silver_orbit)
+inst nes_bleep type=pulse2 duty=50 vol_env=[8,8,7,5,5,4,3,1]
+
+# === Triangle bass ===
+
+# Ostinato bass with subtle pitch fall-off
+inst nes_tri type=triangle pitch_env=[1,0,0,0,0,0,0,0]
+
+# Plain triangle
+inst nes_bass type=triangle
+
+# Longer linear counter (kingdom_hall)
+inst nes_tri_long type=triangle linear=96
+
+# Triangle with looped arpeggio (nes_macro_arp_triangle)
+inst nes_tri_arp type=triangle arp_env=[0,4,7|0]

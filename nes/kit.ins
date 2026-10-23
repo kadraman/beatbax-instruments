@@ -1,0 +1,119 @@
+# BeatBax NES full kit — concatenated (remote-safe; no nested imports)
+# Import: github:kadraman/beatbax-instruments/main/nes/kit.ins
+
+# ========== melodic ==========
+# BeatBax NES melodic (pulse + triangle) — self-contained (remote-safe)
+# Source: battle_fanfare, silver_orbit/shadow_temple, covers, macro demos
+# Import: github:kadraman/beatbax-instruments/main/nes/melodic.ins
+
+# === Pulse leads ===
+
+# Pitch-rip lead (battle_fanfare) — attack bend then flat
+inst nes_lead type=pulse1 duty=25 vol=10 pitch_env=[2,1,0,0,0,0,0,0]
+
+# Fanfare stab with volume + duty macros
+inst nes_lead_stab type=pulse1 duty=25 vol_env=[15,15,14,12,10,8,7,6,6,5,5,4,4,3,3,2] duty_env=[1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2|1]
+
+# Sustained swell then plateau (battle_fanfare lead_long)
+inst nes_lead_long type=pulse1 duty=25 vol_env=[6,8,10,11,12,12,12,12,12,12,12,10,9,8,7,6|12]
+
+# Warm 50% lead, flat
+inst nes_lead_warm type=pulse1 duty=50 vol=11
+
+# Thin 12.5% lead
+inst nes_lead_thin type=pulse1 duty=12 vol=9
+
+# Intro swell pad (silver_orbit family)
+inst nes_lead_swell type=pulse1 duty=50 vol_env=[2,3,4,5,6,7,8,9,10,11|9]
+
+# Plucky decay lead (covers guitar/piano family)
+inst nes_pluck type=pulse1 duty=25 vol=10 vol_env=[12,10,8,6,4,2,1]
+
+# Hardware fade-out lead
+inst nes_lead_end type=pulse1 duty=25 env=11,down env_period=10
+
+# === Pulse 2 harmony ===
+
+inst nes_harm type=pulse2 duty=12 vol=9
+inst nes_harm_warm type=pulse2 duty=50 vol=9
+inst nes_harm_stab type=pulse2 duty=50 vol_env=[15,15,14,12,10,8,7,6,6,5,5,4,4,3,3,2]
+
+# Looped minor triad arp (enable arp_env for shimmer)
+inst nes_harm_arp type=pulse2 duty=50 vol=9 arp_env=[0,3,7|0]
+
+# Soft pad / choir
+inst nes_pad type=pulse2 duty=50 vol=8
+
+# Short bleep (shadow_temple / silver_orbit)
+inst nes_bleep type=pulse2 duty=50 vol_env=[8,8,7,5,5,4,3,1]
+
+# === Triangle bass ===
+
+# Ostinato bass with subtle pitch fall-off
+inst nes_tri type=triangle pitch_env=[1,0,0,0,0,0,0,0]
+
+# Plain triangle
+inst nes_bass type=triangle
+
+# Longer linear counter (kingdom_hall)
+inst nes_tri_long type=triangle linear=96
+
+# Triangle with looped arpeggio (nes_macro_arp_triangle)
+inst nes_tri_arp type=triangle arp_env=[0,4,7|0]
+
+# ========== drums ==========
+# BeatBax NES noise drums — self-contained (remote-safe)
+# Source: battle_fanfare / cover kit (period 12/7/2 + ghost/crash)
+# Import: github:kadraman/beatbax-instruments/main/nes/drums.ins
+
+# Deep kick — noise_period=12
+inst kick type=noise noise_mode=normal noise_period=12 vol_env=[15,14,12,9,6,4,2,1] note=C5
+
+# Mid snare — noise_period=7
+inst snare type=noise noise_mode=normal noise_period=7 vol_env=[14,13,11,9,7,5,3,2,1] note=C5
+
+# Closed hi-hat — noise_period=2
+inst hihat type=noise noise_mode=normal noise_period=2 vol_env=[7,4,2,1] note=C5
+
+# Ghost snare (quiet backbeat)
+inst ghost type=noise noise_mode=normal noise_period=7 vol_env=[5,4,3,2,1] note=C5
+
+# Crash / cymbal — noise_period=3
+inst crash type=noise noise_mode=normal noise_period=3 vol_env=[12,11,10,9,8,7,6,5,4,3,2,1] note=C5
+
+# Open-ish hat (slightly longer)
+inst hat_open type=noise noise_mode=normal noise_period=2 vol_env=[9,7,5,3,2,1] note=C5
+
+# Rim / short tick
+inst rim type=noise noise_mode=normal noise_period=12 vol_env=[11,6,2] note=C5
+
+# Atmospheric drum palette (silver_orbit / shadow_temple)
+inst drum_hi type=noise noise_mode=normal noise_period=2 vol_env=[6,2] note=C5
+inst drum_med type=noise noise_mode=normal noise_period=6 vol_env=[9,7,4,2] note=C5
+inst drum_lo type=noise noise_mode=normal noise_period=11 vol_env=[10,7,4,2] note=C5
+
+# Hardware-env variants (kingdom_hall / wily style)
+inst kick_env type=noise noise_mode=normal noise_period=12 env=15,down env_period=2 note=C5
+inst snare_env type=noise noise_mode=normal noise_period=7 env=14,down env_period=2 note=C5
+inst hihat_env type=noise noise_mode=normal noise_period=2 env=6,down env_period=0 note=C5
+
+# ========== dmc ==========
+# BeatBax NES DMC sample instruments — self-contained (remote-safe)
+# Uses engine-bundled @nes/* samples (no .dmc binaries in this repo)
+# Source: nes_dmc_demo, battle_fanfare, covers
+# Import: github:kadraman/beatbax-instruments/main/nes/dmc.ins
+
+# Bundled samples: bongo, clap, crash, high_tom, hihat, kick, low_tom,
+# middle_tom, muted_bongo, snare, bass_c2
+inst kick_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/kick"
+inst snare_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/snare"
+inst clap_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/clap"
+inst crash_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/crash"
+inst hihat_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/hihat"
+inst bongo_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/bongo"
+inst muted_bongo_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/muted_bongo"
+inst high_tom_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/high_tom"
+inst middle_tom_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/middle_tom"
+inst low_tom_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/low_tom"
+inst bass_dmc type=dmc dmc_rate=15 dmc_loop=false dmc_sample="@nes/bass_c2"
+inst bass_slow_dmc type=dmc dmc_rate=4 dmc_loop=false dmc_sample="@nes/bass_c2"
